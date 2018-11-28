@@ -1,19 +1,8 @@
 <?xml version="1.0"?>
-<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
-
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
     <xacro:property name="stand_mass"   value="2" /> 
     <xacro:property name="stand_radius" value="0.03"/>
     <xacro:property name="stand_length" value="0.4"/>
-
-    <xacro:property name="kinect_offset_z" value="0.24" />
-    <xacro:property name="kinect_offset_p" value="0.4" />
-
-    <xacro:include filename="$(find marm_description)/urdf/mbot_base_gazebo.xacro" />
-    <xacro:include filename="$(find marm_description)/urdf/arm_base_gazebo.xacro" />
-    <xacro:include filename="$(find marm_description)/urdf/marm.gazebo.urdf.xacro" />
-    <xacro:include filename="$(find marm_description)/urdf/kinect_gazebo.xacro" />
-
-    <mbot_base_gazebo/>
 <!-- left_arm -->
     <joint name="base_stand_joint1" type="fixed">
         <origin xyz="0.2 0 ${stand_length/2+0.08}" rpy="0 0 0" />        
@@ -73,13 +62,11 @@
     </gazebo>
 
     <arm_base prefix="right" parent="stand2" xyz="0 0 0" rpy="${M_PI/2} 0 0"/>
-
-    <!-- Kinect -->
-  <!--  <joint name="kinect_frame_joint" type="fixed">
-        <origin xyz="0 0 ${kinect_offset_z}" rpy="0 ${kinect_offset_p} 0" />
-        <parent link="stand1"/>
-        <child link="camera_link"/>
-    </joint>
-    <xacro:kinect_camera prefix="camera"/> -->
-
+    
+   <!-- ros_control plugin -->
+     <gazebo>
+        <plugin name="${prefix}_gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/arm2</robotNamespace>
+        </plugin>
+    </gazebo>
 </robot>
