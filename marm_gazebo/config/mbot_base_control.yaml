@@ -1,5 +1,5 @@
-marm:
-  arm_joint_controller:
+mbot_base:
+  gazebo_ros_control:
     type: "position_controllers/JointTrajectoryController"
     joints:
       - left_joint1
@@ -8,12 +8,6 @@ marm:
       - left_joint4
       - left_joint5
       - left_joint6
-      - right_joint1
-      - right_joint2
-      - right_joint3
-      - right_joint4
-      - right_joint5
-      - right_joint6
 
     gains:
       left_joint1:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
@@ -22,18 +16,12 @@ marm:
       left_joint4:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
       left_joint5:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
       left_joint6:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
-      right_joint1:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
-      right_joint2:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
-      right_joint3:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
-      right_joint4:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
-      right_joint5:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
-      right_joint6:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+
 
   gripper_controller:
     type: "position_controllers/JointTrajectoryController"
     joints:
-      - left_finger_joint1 
-      - right_finger_joint1       
+      - left_finger_joint1
     gains:
       left_finger_joint1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
-      right_finger_joint1:  {p: 50.0, d: 1.0, i: 0.01, i_clamp: 1.0}
+
