@@ -40,7 +40,7 @@
                        right_joint6_controller 
                        right_gripper_controller" />
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" >
-        <remap from="joint_states" to="/marm/joint_states" />
+        <remap from="/joint_states" to="/marm/joint_states" />
     </node>
 
     <!-- 在gazebo中加载机器人模型-->

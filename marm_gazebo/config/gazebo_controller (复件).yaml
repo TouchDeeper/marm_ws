@@ -7,50 +7,50 @@ gazebo_ros_control:
   pid_gains:
     # these gains are used by the gazebo_ros_control plugin
     left_joint1:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     left_joint2:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     left_joint3:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     left_joint4:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     left_joint5:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     left_joint6:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     left_finger_joint1:
       p: 50.0
-      i: 0.011
+      i: 0.11
       d: 1.0
       i_clamp: 1.0
       antiwindup: false
@@ -58,50 +58,50 @@ gazebo_ros_control:
 
 
     right_joint1:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     right_joint2:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     right_joint3:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     right_joint4:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     right_joint5:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     right_joint6:
-      p: 1000.0
-      i: 0.01
-      d: 10.0
+      p: 20.0
+      i: 0.1
+      d: 0.0
       i_clamp: 0.2
       antiwindup: false
       publish_state: true
     right_finger_joint1:
       p: 50.0
-      i: 0.011
+      i: 0.11
       d: 1.0
       i_clamp: 1.0
       antiwindup: false
