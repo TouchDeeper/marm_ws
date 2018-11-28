@@ -32,6 +32,7 @@ marm:
     stop_trajectory_duration: 0.5
     state_publish_rate:  25
     action_monitor_rate: 10
+
   gripper_controller:
     type: "position_controllers/JointTrajectoryController"
     joints:
@@ -45,4 +46,3 @@ marm:
     stop_trajectory_duration: 0.5
     state_publish_rate:  25
     action_monitor_rate: 10
-
