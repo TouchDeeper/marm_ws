@@ -20,11 +20,25 @@
     <!-- 加载机器人模型描述参数 -->
     <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find marm_description)/urdf/mbot_with_arm_kinect_gazebo.xacro'" /> 
     <!--加载使用positioninterface的pid参数-->
-    <rosparam file="$(find marm_gazebo)/config/gazebo_controller.yaml" command="load" />
+    <!--<rosparam file="$(find marm_gazebo)/config/gazebo_controller.yaml" command="load" />-->
     <rosparam file="$(find marm_gazebo)/config/joint_state_controller.yaml" command="load" />
     <rosparam file="$(find marm_gazebo)/config/trajectory_control.yaml" command="load" />
     <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen"
-      ns="/marm" args="arm_joint_controller gripper_controller joint_state_controller" />
+      ns="/marm" args="joint_state_controller
+                       left_joint1_controller
+                       left_joint2_controller
+                       left_joint3_controller
+                       left_joint4_controller
+                       left_joint5_controller
+                       left_joint6_controller
+                       left_gripper_controller
+                       right_joint1_controller
+                       right_joint2_controller
+                       right_joint3_controller
+                       right_joint4_controller
+                       right_joint5_controller
+                       right_joint6_controller 
+                       right_gripper_controller" />
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" >
         <remap from="joint_states" to="/marm/joint_states" />
     </node>
