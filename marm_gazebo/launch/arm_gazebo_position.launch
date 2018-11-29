@@ -1,22 +1,26 @@
 <launch>
   <!-- Load joint controller configurations from YAML file to parameter server -->
-  <rosparam file="$(find marm_gazebo)/config/arm_gazebo_joint_position.yaml" command="load"/>
+  <!--rosparam file="$(find marm_gazebo)/config/arm_gazebo_joint_position.yaml" command="load"/-->
+  <rosparam file="$(find marm_gazebo)/config/trajectory_control.yaml" command="load"/>
   <rosparam file="$(find marm_gazebo)/config/arm_gazebo_joint_states.yaml" command="load"/>
 
   <!-- load the controllers -->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
 	output="screen" ns="/arm2" args="joint_state_controller
+                                  arm_joint_controller
+                                  gripper_controller
+                   " />
+
+</launch>
+<!-- 
                     left_joint1_position_controller
 					  	      left_joint2_position_controller 
 					          left_joint3_position_controller 
 					          left_joint4_position_controller 
 					          left_joint5_position_controller 
 					          left_joint6_position_controller 
-                    left_gripper_controller 
-                   " />
-
-</launch>
-<!-- right_joint1_position_controller
+                    left_gripper_controller
+                    right_joint1_position_controller
                     right_joint2_position_controller
                     right_joint3_position_controller
                     right_joint4_position_controller
