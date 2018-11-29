@@ -27,12 +27,12 @@
     <arm_base parent="bottom_link" xyz="0 0 0.02" rpy="0 0 0"/>
 
     <!-- kinect -->
-    <joint name="kinect_joint" type="fixed">
+    <!--joint name="kinect_joint" type="fixed">
         <origin xyz="0.1 0 0.8" rpy="0 ${75.0 * deg_to_rad} 0" />
         <parent link="base_link"/>
         <child link="kinect_link"/>
     </joint>
 
-    <xacro:kinect_camera prefix="kinect"/>
+    <xacro:kinect_camera prefix="kinect"/-->
 
 </robot>
