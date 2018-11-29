@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<robot name="arm2" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
     <!-- Defining the colors used in this robot -->
     <material name="Black">
@@ -38,7 +38,7 @@
     <xacro:property name="link3_length" value="0.15" />
     <xacro:property name="link3_mass" value="0.8" />
 
-    <!-- link4 properties -->
+    <!-- ink4 properties -->
     <xacro:property name="link4_radius" value="0.025" />
     <xacro:property name="link4_length" value="0.06" />
     <xacro:property name="link4_mass" value="0.7" />
@@ -82,14 +82,14 @@
     </xacro:macro>
 
     <!-- /////////////////////////////////////   ARM BASE    ////////////////////////////////////////////// -->
-    <xacro:macro name="arm_base" params="parent xyz rpy">
-        <joint name="${parent}_arm_joint" type="fixed">
+    <xacro:macro name="arm_base" params="prefix parent xyz rpy">
+        <joint name="${prefix}_${parent}_arm_joint" type="fixed">
             <origin xyz="${xyz}" rpy="${rpy}" />        
             <parent link="${parent}"/>
-            <child link="base_arm" />
+            <child link="${prefix}_base_arm" />
         </joint>
 
-        <link name="base_arm">
+        <link name="${prefix}_base_arm">
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0" />
                 <geometry>
@@ -98,14 +98,14 @@
             </visual>
         </link>
 
-        <joint name="base_joint" type="fixed">
+        <joint name="${prefix}_base_joint" type="fixed">
             <origin xyz="0 0 ${link0_length/2}" rpy="0 0 0" />        
-            <parent link="base_arm"/>
-            <child link="link0" />
+            <parent link="${prefix}_base_arm"/>
+            <child link="${prefix}_link0" />
         </joint>
 
-        <!-- /////////////////////////////////////    LINK0    ////////////////////////////////////////////// -->
-        <link name="link0">
+        <!-- /////////////////////////////////////  link0    ////////////////////////////////////////////// -->
+        <link name="${prefix}_link0">
             <visual>
                 <origin xyz="0 0 0" rpy="0 0 0" />
                 <geometry>
@@ -122,16 +122,16 @@
             <cylinder_inertial_matrix m="${link0_mass}" r="${link0_radius}" h="${link0_length}"/>
         </link>
 
-        <joint name="joint1" type="revolute">
-            <parent link="link0"/>
-            <child link="link1"/>
+        <joint name="${prefix}_joint1" type="revolute">
+            <parent link="${prefix}_link0"/>
+            <child link="${prefix}_link1"/>
             <origin xyz="0 0 ${link0_length/2}" rpy="0 ${M_PI/2} 0" />
             <axis xyz="-1 0 0" />
             <limit effort="300" velocity="1" lower="${-M_PI}" upper="${M_PI}"/>
         </joint>
 
-        <!-- /////////////////////////////////////   LINK1  ////////////////////////////////////////////// -->
-        <link name="link1" >
+        <!-- /////////////////////////////////////   link1  ////////////////////////////////////////////// -->
+        <link name="${prefix}_link1" >
             <visual>
                 <origin xyz="-${link1_length/2} 0 0" rpy="0 ${M_PI/2} 0" />
                 <geometry>
@@ -148,16 +148,16 @@
             <cylinder_inertial_matrix m="${link1_mass}" r="${link1_radius}" h="${link1_length}"/>
         </link>
 
-        <joint name="joint2" type="revolute">
-            <parent link="link1"/>
-            <child link="link2"/>
+        <joint name="${prefix}_joint2" type="revolute">
+            <parent link="${prefix}_link1"/>
+            <child link="${prefix}_link2"/>
             <origin xyz="-${link1_length} 0 0.0" rpy="-${M_PI/2} 0 ${M_PI/2}" />
             <axis xyz="1 0 0" />
             <limit effort="300" velocity="1" lower="${-M_PI}" upper="${M_PI}" />
         </joint>
 
-        <!-- ///////////////////////////////////////   LINK2  ////////////////////////////////////////////// -->
-        <link name="link2" >
+        <!-- ///////////////////////////////////////   link2  ////////////////////////////////////////////// -->
+        <link name="${prefix}_link2" >
             <visual>
                 <origin xyz="0 0 ${link2_length/2}" rpy="0 0 0" />
                 <geometry>
@@ -175,16 +175,16 @@
             <cylinder_inertial_matrix m="${link2_mass}" r="${link2_radius}" h="${link2_length}"/>
         </link>
 
-        <joint name="joint3" type="revolute">
-            <parent link="link2"/>
-            <child link="link3"/>
+        <joint name="${prefix}_joint3" type="revolute">
+            <parent link="${prefix}_link2"/>
+            <child link="${prefix}_link3"/>
             <origin xyz="0 0 ${link2_length}" rpy="0 ${M_PI} 0" />
             <axis xyz="-1 0 0" />
             <limit effort="300" velocity="1" lower="${-M_PI}" upper="${M_PI}" />
         </joint>
 
-        <!-- /////////////////////////////////   LINK3  ///////////////////////////////////////////////////// -->
-        <link name="link3" >
+        <!-- /////////////////////////////////   link3  ///////////////////////////////////////////////////// -->
+        <link name="${prefix}_link3" >
             <visual>
                 <origin xyz="0 0 -${link3_length/2}" rpy="0 0 0" />
                 <geometry>
@@ -201,16 +201,16 @@
             <cylinder_inertial_matrix m="${link3_mass}" r="${link3_radius}" h="${link3_length}"/>
         </link>
 
-        <joint name="joint4" type="revolute">
-            <parent link="link3"/>
-            <child link="link4"/>
+        <joint name="${prefix}_joint4" type="revolute">
+            <parent link="${prefix}_link3"/>
+            <child link="${prefix}_link4"/>
             <origin xyz="0.0 0.0 -${link3_length}" rpy="0 ${M_PI/2} ${M_PI}" />
             <axis xyz="1 0 0" />
             <limit effort="300" velocity="1" lower="${-M_PI}" upper="${M_PI}" />
         </joint>
 
-        <!-- ///////////////////////////////////   LINK4  //////////////////////////////////////////////// -->
-        <link name="link4" >
+        <!-- ///////////////////////////////////   link4  //////////////////////////////////////////////// -->
+        <link name="${prefix}_link4" >
             <visual>
                 <origin xyz="${link4_length/2} 0 0" rpy="0 ${M_PI/2} 0" />
                 <geometry>
@@ -227,16 +227,16 @@
             <cylinder_inertial_matrix m="${link4_mass}" r="${link4_radius}" h="${link4_length}"/>
         </link>
 
-        <joint name="joint5" type="revolute">
-            <parent link="link4"/>
-            <child link="link5"/>
+        <joint name="${prefix}_joint5" type="revolute">
+            <parent link="${prefix}_link4"/>
+            <child link="${prefix}_link5"/>
             <origin xyz="${link4_length} 0.0 0.0" rpy="0 ${M_PI/2} 0" />
             <axis xyz="1 0 0" />
             <limit effort="300" velocity="1" lower="${-M_PI}" upper="${M_PI}" />
         </joint>
 
-        <!-- //////////////////////////////////   LINK5  ///////////////////////////////////////////////// -->
-        <link name="link5">
+        <!-- //////////////////////////////////   link5  ///////////////////////////////////////////////// -->
+        <link name="${prefix}_link5">
             <visual>
                 <origin xyz="0 0 ${link4_length/2}" rpy="0 0 0" />
                 <geometry>
@@ -253,16 +253,16 @@
             <cylinder_inertial_matrix m="${link5_mass}" r="${link5_radius}" h="${link5_length}"/>
         </link>
 
-        <joint name="joint6" type="revolute">
-            <parent link="link5"/>
-            <child link="link6"/>
+        <joint name="${prefix}_joint6" type="revolute">
+            <parent link="${prefix}_link5"/>
+            <child link="${prefix}_link6"/>
             <origin xyz="0 0 ${link4_length}" rpy="${1.5*M_PI} -${M_PI/2} 0" />
             <axis xyz="1 0 0" />
             <limit effort="300" velocity="1" lower="${-2*M_PI}" upper="${2*M_PI}" />
         </joint>
 
-        <!-- ////////////////////////////////   LINK6  ///////////////////////////////////////////////// -->
-        <link name="link6">
+        <!-- ////////////////////////////////   link6  ///////////////////////////////////////////////// -->
+        <link name="${prefix}_link6">
             <visual>
                 <origin xyz="${link6_length/2} 0 0 " rpy="0 ${M_PI/2} 0" />
                 <geometry>
@@ -279,9 +279,9 @@
             <cylinder_inertial_matrix m="${link6_mass}" r="${link6_radius}" h="${link6_length}"/>
         </link>
 
-        <joint name="finger_joint1" type="prismatic">
-            <parent link="link6"/>
-            <child link="gripper_finger_link1"/>
+        <joint name="${prefix}_finger_joint1" type="prismatic">
+            <parent link="${prefix}_link6"/>
+            <child link="${prefix}_gripper_finger_link1"/>
             <origin xyz="${link6_length} -0.03 0" rpy="0 0 0" />
             <axis xyz="0 1 0" />
             <limit effort="100" lower="0" upper="0.06" velocity="0.02"/>
@@ -289,7 +289,7 @@
 
         <!-- //////////////////////////////////////   gripper   ////////////////////////////////////////////// -->
         <!-- LEFT GRIPPER AFT LINK -->
-        <link name="gripper_finger_link1">
+        <link name="${prefix}_gripper_finger_link1">
             <visual>
                 <origin xyz="${gripper_height/2} 0 0" rpy="0 ${M_PI/2} 0" />
                 <geometry>
@@ -306,14 +306,14 @@
             <box_inertial_matrix m="${gripper_mass}" w="${gripper_width}" h="${gripper_height}" d="${gripper_length}"/>
         </link>
 
-        <joint name="finger_joint2" type="fixed">
-            <parent link="link6"/>
-            <child link="gripper_finger_link2"/>
+        <joint name="${prefix}_finger_joint2" type="fixed">
+            <parent link="${prefix}_link6"/>
+            <child link="${prefix}_gripper_finger_link2"/>
             <origin xyz="${link6_length} 0.03 0" rpy="0 0 0" />
         </joint>
 
         <!-- RIGHT GRIPPER AFT LINK -->
-        <link name="gripper_finger_link2">
+        <link name="${prefix}_gripper_finger_link2">
             <visual>
                 <origin xyz="${gripper_height/2} 0 0" rpy="0 ${M_PI/2} 0" />
                 <geometry>
@@ -331,44 +331,44 @@
         </link>
 
         <!-- Grasping frame -->
-        <link name="grasping_frame"/>
+        <link name="${prefix}_grasping_frame"/>
 
-        <joint name="grasping_frame_joint" type="fixed">
-            <parent link="link6"/>
-            <child link="grasping_frame"/>
+        <joint name="${prefix}_grasping_frame_joint" type="fixed">
+            <parent link="${prefix}_link6"/>
+            <child link="${prefix}_grasping_frame"/>
             <origin xyz="${gripper_height} 0 0" rpy="0 0 0"/>
         </joint>
 
         <!-- /////////////////////////////////   Gazebo   ////////////////////////////////////// -->
-        <gazebo reference="bottom_link">
+        <!--gazebo reference="${prefix}_bottom_link">
+            <material>Gazebo/White</material>
+        </gazebo-->
+        <gazebo reference="${prefix}_base_arm">
             <material>Gazebo/White</material>
         </gazebo>
-        <gazebo reference="base_arm">
-            <material>Gazebo/White</material>
-        </gazebo>
-        <gazebo reference="link1">
+        <gazebo reference="${prefix}_link1">
             <material>Gazebo/Blue</material>
         </gazebo>
-        <gazebo reference="link2">
+        <gazebo reference="${prefix}_link2">
             <material>Gazebo/White</material>
         </gazebo>
-        <gazebo reference="link3">
+        <gazebo reference="${prefix}_link3">
             <material>Gazebo/Blue</material>
         </gazebo>
-        <gazebo reference="link4">
+        <gazebo reference="${prefix}_link4">
             <material>Gazebo/Black</material>
         </gazebo>
-        <gazebo reference="link5">
+        <gazebo reference="${prefix}_link5">
             <material>Gazebo/White</material>
         </gazebo>
-        <gazebo reference="link6">
+        <gazebo reference="${prefix}_link6">
             <material>Gazebo/Blue</material>
         </gazebo>
-        <gazebo reference="gripper_finger_link1">
+        <gazebo reference="${prefix}_gripper_finger_link1">
             <material>Gazebo/White</material>
         </gazebo>
-        <gazebo reference="gripper_finger_link2">
-            <material>Gazebo/White</material>
+        <gazebo reference="${prefix}_gripper_finger_link2">
+            <material>Gazebo/Black</material>
         </gazebo>
         
         <!-- Transmissions for ROS Control -->
@@ -385,20 +385,15 @@
             </transmission>
         </xacro:macro>
         
-        <xacro:transmission_block joint_name="joint1"/>
-        <xacro:transmission_block joint_name="joint2"/>
-        <xacro:transmission_block joint_name="joint3"/>
-        <xacro:transmission_block joint_name="joint4"/>
-        <xacro:transmission_block joint_name="joint5"/>
-        <xacro:transmission_block joint_name="joint6"/>
-        <xacro:transmission_block joint_name="finger_joint1"/>
+        <xacro:transmission_block joint_name="${prefix}_joint1"/>
+        <xacro:transmission_block joint_name="${prefix}_joint2"/>
+        <xacro:transmission_block joint_name="${prefix}_joint3"/>
+        <xacro:transmission_block joint_name="${prefix}_joint4"/>
+        <xacro:transmission_block joint_name="${prefix}_joint5"/>
+        <xacro:transmission_block joint_name="${prefix}_joint6"/>
+        <xacro:transmission_block joint_name="${prefix}_finger_joint1"/>
 
-        <!-- ros_control plugin -->
-        <gazebo>
-            <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-                <robotNamespace>/arm2</robotNamespace>
-            </plugin>
-        </gazebo>
+
     </xacro:macro>
 
 </robot>
