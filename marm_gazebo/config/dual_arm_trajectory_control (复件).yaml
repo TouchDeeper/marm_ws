@@ -1,6 +1,35 @@
 arm2:
+  left_arm_controller:
+    type: "effort_controllers/JointTrajectoryController"
+    joints:
+      - left_joint1
+      - left_joint2
+      - left_joint3
+      - left_joint4
+      - left_joint5
+      - left_joint6
+    gains:
+      left_joint1:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      left_joint2:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      left_joint3:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      left_joint4:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      left_joint5:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      left_joint6:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+    constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.01
+      left_joint1: {trajectory: 0.1, goal: 0.1}
+      left_joint2: {trajectory: 0.1, goal: 0.1}
+      left_joint3: {trajectory: 0.1, goal: 0.1}
+      left_joint4: {trajectory: 0.1, goal: 0.1}
+      left_joint5: {trajectory: 0.1, goal: 0.1}
+      left_joint6: {trajectory: 0.1, goal: 0.1}
+    stop_trajectory_duration: 0.5
+    state_publish_rate:  25
+    action_monitor_rate: 10
+
   left_tool_controller:
-    type: "position_controllers/JointTrajectoryController"
+    type: "effort_controllers/JointTrajectoryController"
     joints:
       - left_finger_joint1 
     gains:
@@ -13,8 +42,37 @@ arm2:
     state_publish_rate:  25
     action_monitor_rate: 10
 
+  right_arm_controller:
+    type: "effort_controllers/JointTrajectoryController"
+    joints:
+      - right_joint1
+      - right_joint2
+      - right_joint3
+      - right_joint4
+      - right_joint5
+      - right_joint6
+    gains:
+      right_joint1:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      right_joint2:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      right_joint3:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      right_joint4:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      right_joint5:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+      right_joint6:   {p: 1000.0, i: 0.0, d: 0.1, i_clamp: 0.0}
+    constraints:
+      goal_time: 0.6
+      stopped_velocity_tolerance: 0.01
+      right_joint1: {trajectory: 0.1, goal: 0.1}
+      right_joint2: {trajectory: 0.1, goal: 0.1}
+      right_joint3: {trajectory: 0.1, goal: 0.1}
+      right_joint4: {trajectory: 0.1, goal: 0.1}
+      right_joint5: {trajectory: 0.1, goal: 0.1}
+      right_joint6: {trajectory: 0.1, goal: 0.1}
+    stop_trajectory_duration: 0.5
+    state_publish_rate:  25
+    action_monitor_rate: 10
+
   right_tool_controller:
-    type: "position_controllers/JointTrajectoryController"
+    type: "effort_controllers/JointTrajectoryController"
     joints:
       - right_finger_joint1
     gains:
@@ -26,9 +84,8 @@ arm2:
     stop_trajectory_duration: 0.5
     state_publish_rate:  25
     action_monitor_rate: 10
-
   dual_arm_controller:
-    type: "position_controllers/JointTrajectoryController"
+    type: "effort_controllers/JointTrajectoryController"
     joints:
       - left_joint1
       - left_joint2
