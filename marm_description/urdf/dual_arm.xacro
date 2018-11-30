@@ -4,10 +4,13 @@
     <xacro:property name="stand_radius" value="0.03"/>
     <xacro:property name="stand_length" value="0.4"/>
     <xacro:include filename="$(find marm_description)/urdf/arm_base_gazebo.xacro" />
-    <link name="virtual_link" />
-    <joint name="virtual_joint" type="fixed">
+    <link name="virtuallink" />
+    <gazebo reference="virtuallink">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+    <joint name="virtualjoint" type="fixed">
         <origin xyz="0 0 0" rpy="0 0 0" />
-        <parnet link="virtual_link" />
+        <parent link="virtuallink" />
         <child link="base_link" />
     </joint>
     <link name="base_link">

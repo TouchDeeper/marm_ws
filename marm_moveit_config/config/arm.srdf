@@ -39,27 +39,16 @@
     <end_effector name="robot_gripper" parent_link="grasping_frame" group="gripper" />
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="base_link" link2="bottom_link" reason="Adjacent" />
-    <disable_collisions link1="base_link" link2="kinect_link" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="link0" reason="Adjacent" />
     <disable_collisions link1="base_link" link2="link1" reason="Never" />
-    <disable_collisions link1="bottom_link" link2="kinect_link" reason="Never" />
     <disable_collisions link1="bottom_link" link2="link0" reason="Default" />
     <disable_collisions link1="bottom_link" link2="link1" reason="Never" />
-    <disable_collisions link1="gripper_finger_link1" link2="kinect_link" reason="Never" />
     <disable_collisions link1="gripper_finger_link1" link2="link4" reason="Never" />
     <disable_collisions link1="gripper_finger_link1" link2="link5" reason="Never" />
     <disable_collisions link1="gripper_finger_link1" link2="link6" reason="Adjacent" />
-    <disable_collisions link1="gripper_finger_link2" link2="kinect_link" reason="Never" />
     <disable_collisions link1="gripper_finger_link2" link2="link4" reason="Never" />
     <disable_collisions link1="gripper_finger_link2" link2="link5" reason="Never" />
     <disable_collisions link1="gripper_finger_link2" link2="link6" reason="Adjacent" />
-    <disable_collisions link1="kinect_link" link2="link0" reason="Never" />
-    <disable_collisions link1="kinect_link" link2="link1" reason="Never" />
-    <disable_collisions link1="kinect_link" link2="link2" reason="Never" />
-    <disable_collisions link1="kinect_link" link2="link3" reason="Never" />
-    <disable_collisions link1="kinect_link" link2="link4" reason="Never" />
-    <disable_collisions link1="kinect_link" link2="link5" reason="Never" />
-    <disable_collisions link1="kinect_link" link2="link6" reason="Never" />
     <disable_collisions link1="link0" link2="link1" reason="Adjacent" />
     <disable_collisions link1="link1" link2="link2" reason="Adjacent" />
     <disable_collisions link1="link2" link2="link3" reason="Adjacent" />

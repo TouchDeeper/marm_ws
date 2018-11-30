@@ -53,7 +53,7 @@ arm2:
         - right_joint4
         - right_joint5
         - right_joint6
-    - name: dual_arm_controller
+    - name: arm2/dual_arm_controller
       action_ns: follow_joint_trajectory
       default: True
       type: FollowJointTrajectory

@@ -16,7 +16,7 @@
     <arg name="headless" value="$(arg headless)"/>
   </include>
 
-  <include file="$(find marm_gazebo)/launch/arm_gazebo_position.launch" />
+  <!--include file="$(find marm_gazebo)/launch/arm_gazebo_position.launch" /-->
 
   <!-- Load the URDF into the ROS Parameter Server -->
   <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find marm_description)/urdf/arm_gazebo.xacro'" /> 
@@ -25,7 +25,7 @@
 
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-	args="-urdf -model arm2 -param robot_description"/> 
+	args="-urdf -model arm -param robot_description"/> 
 
 
 </launch>

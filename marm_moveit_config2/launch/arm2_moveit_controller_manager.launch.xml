@@ -4,7 +4,7 @@
   <param name="moveit_controller_manager" value="$(arg moveit_controller_manager)"/>
 
   <!-- load controller_list -->
-  <arg name="use_controller_manager" default="true" />
-  <param name="use_controller_manager" value="$(arg use_controller_manager)" />
+  <!--arg name="use_controller_manager" default="true" />
+  <param name="use_controller_manager" value="$(arg use_controller_manager)" /-->
   <rosparam file="$(find marm_moveit_config2)/config/ros_controllers.yaml"/>
 </launch>
