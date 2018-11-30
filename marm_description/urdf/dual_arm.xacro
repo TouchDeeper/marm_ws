@@ -1,16 +1,22 @@
 <?xml version="1.0"?>
-<robot name="arm2" xmlns:xacro="http:/www.ros.org/wiki/xacro">
+<robot name="arm2" xmlns:xacro="http://www.ros.org/wiki/xacro">
     <xacro:property name="stand_mass"   value="2" /> 
     <xacro:property name="stand_radius" value="0.03"/>
     <xacro:property name="stand_length" value="0.4"/>
     <xacro:include filename="$(find marm_description)/urdf/arm_base_gazebo.xacro" />
+    <link name="virtual_link" />
+    <joint name="virtual_joint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parnet link="virtual_link" />
+        <child link="base_link" />
+    </joint>
     <link name="base_link">
         <visual>
-			<origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
+			    <origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
 			    <geometry>
-				   <box size="1 1 0.02" />
+				      <box size="1 1 0.02" />
 			    </geometry>
-			<material name="Black" />
+			    <material name="Black" />
         </visual>
         <collision>
             <origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
@@ -51,7 +57,7 @@
     <arm_base prefix="left" parent="stand1" xyz="0 0 0" rpy="${M_PI/2} 0 0"/>
 
 <!-- right_arm -->
-    <!--joint name="base_stand_joint2" type="fixed">
+    <joint name="base_stand_joint2" type="fixed">
         <origin xyz="-0.2 0 ${stand_length/2+0.08}" rpy="0 0 0" />        
         <parent link="base_link"/>
         <child link="stand2" />
@@ -78,7 +84,7 @@
         <material>Gazebo/Gray</material>
     </gazebo>
 
-    <arm_base prefix="right" parent="stand2" xyz="0 0 0" rpy="${M_PI/2} 0 0"/-->
+    <arm_base prefix="right" parent="stand2" xyz="0 0 0" rpy="${M_PI/2} 0 0"/>
     
    <!-- ros_control plugin -->
      <gazebo>
