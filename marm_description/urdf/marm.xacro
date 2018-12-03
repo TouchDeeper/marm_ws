@@ -11,10 +11,10 @@
     <xacro:include filename="$(find marm_description)/urdf/mbot_base_gazebo.xacro" />
     <xacro:include filename="$(find marm_description)/urdf/arm_base_gazebo.xacro" />
     <xacro:include filename="$(find marm_description)/urdf/marm.gazebo.urdf.xacro" />
-    <xacro:include filename="$(find marm_description)/urdf/kinect_gazebo.xacro" />
+    <!--xacro:include filename="$(find marm_description)/urdf/kinect_gazebo.xacro" /-->
 
     <mbot_base_gazebo/>
-    <link name="base_link">
+    <!--link name="base_link">
         <visual>
 			<origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
 			    <geometry>
@@ -29,10 +29,10 @@
             </geometry>
         </collision>
         <box_inertial_matrix m="1000" w="1" h="0.02" d="1"/>
-    </link>
+    </link-->
 <!-- left_arm -->
     <joint name="base_stand_joint1" type="fixed">
-        <origin xyz="0.2 0 ${stand_length/2+0.08}" rpy="0 0 0" />        
+        <origin xyz="0 0.2 ${stand_length/2+0.08}" rpy="0 0 ${M_PI/2}" />        
         <parent link="base_link"/>
         <child link="stand1" />
     </joint>
@@ -62,7 +62,7 @@
 
 <!-- right_arm -->
     <joint name="base_stand_joint2" type="fixed">
-        <origin xyz="-0.2 0 ${stand_length/2+0.08}" rpy="0 0 0" />        
+        <origin xyz="0 -0.2 ${stand_length/2+0.08}" rpy="0 0 ${M_PI/2}" />        
         <parent link="base_link"/>
         <child link="stand2" />
     </joint>
