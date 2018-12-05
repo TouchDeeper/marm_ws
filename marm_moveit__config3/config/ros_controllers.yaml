@@ -11,7 +11,6 @@ marm:
   hardware_interface:
     joints:
       - world_joint
-      - back_caster_joint
       - left_joint1
       - left_joint2
       - left_joint3
@@ -26,7 +25,6 @@ marm:
       - right_joint5
       - right_joint6
       - right_finger_joint1
-      - front_caster_joint
       - left_wheel_joint
       - right_wheel_joint
     sim_control_mode: 1  # 0: position, 1: velocity
