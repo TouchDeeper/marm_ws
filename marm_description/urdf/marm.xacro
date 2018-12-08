@@ -118,6 +118,6 @@
         <parent link="stand1"/>
         <child link="camera_link"/>
     </joint>
-    <xacro:kinect_camera prefix="camera"/> -->
+    <xacro:kinect_camera prefix="camera"/> -->```
 
 </robot>
