@@ -1,0 +1,123 @@
+<?xml version="1.0"?>
+<robot name="marm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:include filename="$(find marm_description)/urdf/mbot_base_gazebo.xacro" />
+    <xacro:include filename="$(find marm_description)/urdf/arm_base_gazebo.xacro" />
+    <xacro:include filename="$(find marm_description)/urdf/marm.gazebo.urdf.xacro" />
+    <xacro:include filename="$(find marm_description)/urdf/sensors/camera_gazebo.xacro" />
+    <!--xacro:include filename="$(find marm_description)/urdf/kinect_gazebo.xacro" /-->
+
+    <xacro:property name="stand_mass"   value="2" /> 
+    <xacro:property name="stand_radius" value="0.03"/>
+    <xacro:property name="stand_length" value="0.4"/>
+
+    <xacro:property name="kinect_offset_z" value="0.24" />
+    <xacro:property name="kinect_offset_p" value="0.4" />
+
+    <xacro:property name="camera_offset_x" value="0" />
+    <xacro:property name="camera_offset_y" value="${link6_radius+length_y/2}" />
+    <xacro:property name="camera_offset_z" value="0" />
+
+
+
+    <mbot_base_gazebo/>
+    <!--link name="base_link">
+        <visual>
+			<origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
+			    <geometry>
+				   <box size="1 1 0.02" />
+			    </geometry>
+			<material name="Black" />
+        </visual>
+        <collision>
+            <origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
+            <geometry>
+                <box size="1 1 0.02" />
+            </geometry>
+        </collision>
+        <box_inertial_matrix m="1000" w="1" h="0.02" d="1"/>
+    </link-->
+<!-- left_arm -->
+    <!--joint name="base_stand_joint1" type="fixed">
+        <origin xyz="0 0.2 ${stand_length/2+0.08}" rpy="0 0 ${M_PI/2}" />        
+        <parent link="base_link"/>
+        <child link="stand1" />
+    </joint>
+
+    <link name="stand1">
+        <visual>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="${stand_length}" radius="${stand_radius}"/>
+            </geometry>
+            <material name="gray" />
+        </visual>
+        <collision>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="${stand_length}" radius="${stand_radius}"/>
+            </geometry>
+        </collision>   
+        <cylinder_inertial_matrix  m="${stand_mass}" r="${stand_radius}" h="${stand_length}" />
+    </link>
+
+    <gazebo reference="stand1">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+    <arm_base prefix="left" parent="stand1" xyz="0 0 0" rpy="${M_PI/2} 0 0"/-->
+
+<!-- right_arm -->
+    <!--joint name="base_stand_joint2" type="fixed">
+        <origin xyz="0 -0.2 ${stand_length/2+0.08}" rpy="0 0 ${M_PI/2}" />        
+        <parent link="base_link"/>
+        <child link="stand2" />
+    </joint>
+
+    <link name="stand2">
+        <visual>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="${stand_length}" radius="${stand_radius}"/>
+            </geometry>
+            <material name="gray" />
+        </visual>
+        <collision>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="${stand_length}" radius="${stand_radius}"/>
+            </geometry>
+        </collision>   
+        <cylinder_inertial_matrix  m="${stand_mass}" r="${stand_radius}" h="${stand_length}" />
+    </link>
+
+    <gazebo reference="stand2">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+    <arm_base prefix="right" parent="stand2" xyz="0 0 0" rpy="${M_PI/2} 0 0"/-->
+    <!-- leftCamera -->
+    <!--joint name="left_camera_joint" type="fixed">
+        <origin xyz="${camera_offset_x} ${camera_offset_y} ${camera_offset_z}" rpy="${M_PI/2} 0 0" />
+        <parent link="left_link6"/>
+        <child link="left_camera_link"/>
+    </joint>
+
+    <xacro:usb_camera prefix="left_camera"/-->
+
+    <!-- rightCamera -->
+    <!--joint name="right_camera_joint" type="fixed">
+        <origin xyz="${camera_offset_x} ${camera_offset_y} ${camera_offset_z}" rpy="${M_PI/2} 0 0" />
+        <parent link="right_link6"/>
+        <child link="right_camera_link"/>
+    </joint>
+
+    <xacro:usb_camera prefix="right_camera"/-->
+    <!-- Kinect -->
+  <!--  <joint name="kinect_frame_joint" type="fixed">
+        <origin xyz="0 0 ${kinect_offset_z}" rpy="0 ${kinect_offset_p} 0" />
+        <parent link="stand1"/>
+        <child link="camera_link"/>
+    </joint>
+    <xacro:kinect_camera prefix="camera"/> -->
+
+</robot>

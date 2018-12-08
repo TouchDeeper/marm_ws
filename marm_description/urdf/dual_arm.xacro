@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<robot name="arm2" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:property name="stand_mass"   value="2" /> 
+    <xacro:property name="stand_radius" value="0.03"/>
+    <xacro:property name="stand_length" value="0.4"/>
+    <xacro:include filename="$(find marm_description)/urdf/arm_base_gazebo.xacro" />
+    <link name="virtuallink" />
+    <gazebo reference="virtuallink">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+    <joint name="virtualjoint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="virtuallink" />
+        <child link="base_link" />
+    </joint>
+    <link name="base_link">
+        <visual>
+			    <origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
+			    <geometry>
+				      <box size="1 1 0.02" />
+			    </geometry>
+			    <material name="Black" />
+        </visual>
+        <collision>
+            <origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
+            <geometry>
+                <box size="1 1 0.02" />
+            </geometry>
+        </collision>
+        <box_inertial_matrix m="1000" w="1" h="0.02" d="1"/>
+    </link>
+<!-- left_arm -->
+    <joint name="base_stand_joint1" type="fixed">
+        <origin xyz="0.2 0 ${stand_length/2+0.08}" rpy="0 0 0" />        
+        <parent link="base_link"/>
+        <child link="stand1" />
+    </joint>
+
+    <link name="stand1">
+        <visual>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="${stand_length}" radius="${stand_radius}"/>
+            </geometry>
+            <material name="gray" />
+        </visual>
+        <collision>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="${stand_length}" radius="${stand_radius}"/>
+            </geometry>
+        </collision>   
+        <cylinder_inertial_matrix  m="${stand_mass}" r="${stand_radius}" h="${stand_length}" />
+    </link>
+
+    <gazebo reference="stand1">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+    <arm_base prefix="left" parent="stand1" xyz="0 0 0" rpy="${M_PI/2} 0 0"/>
+
+<!-- right_arm -->
+    <joint name="base_stand_joint2" type="fixed">
+        <origin xyz="-0.2 0 ${stand_length/2+0.08}" rpy="0 0 0" />        
+        <parent link="base_link"/>
+        <child link="stand2" />
+    </joint>
+
+    <link name="stand2">
+        <visual>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="${stand_length}" radius="${stand_radius}"/>
+            </geometry>
+            <material name="gray" />
+        </visual>
+        <collision>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder length="${stand_length}" radius="${stand_radius}"/>
+            </geometry>
+        </collision>   
+        <cylinder_inertial_matrix  m="${stand_mass}" r="${stand_radius}" h="${stand_length}" />
+    </link>
+
+    <gazebo reference="stand2">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+
+    <arm_base prefix="right" parent="stand2" xyz="0 0 0" rpy="${M_PI/2} 0 0"/>
+    
+   <!-- ros_control plugin -->
+     <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/arm2</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
