@@ -20,24 +20,8 @@
 
 
     <mbot_base_gazebo/>
-    <!--link name="base_link">
-        <visual>
-			<origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
-			    <geometry>
-				   <box size="1 1 0.02" />
-			    </geometry>
-			<material name="Black" />
-        </visual>
-        <collision>
-            <origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
-            <geometry>
-                <box size="1 1 0.02" />
-            </geometry>
-        </collision>
-        <box_inertial_matrix m="1000" w="1" h="0.02" d="1"/>
-    </link-->
 <!-- left_arm -->
-    <!--joint name="base_stand_joint1" type="fixed">
+    <joint name="base_stand_joint1" type="fixed">
         <origin xyz="0 0.2 ${stand_length/2+0.08}" rpy="0 0 ${M_PI/2}" />        
         <parent link="base_link"/>
         <child link="stand1" />
@@ -64,10 +48,10 @@
         <material>Gazebo/Gray</material>
     </gazebo>
 
-    <arm_base prefix="left" parent="stand1" xyz="0 0 0" rpy="${M_PI/2} 0 0"/-->
+    <arm_base prefix="left" parent="stand1" xyz="0 0 0" rpy="${M_PI/2} 0 0"/>
 
 <!-- right_arm -->
-    <!--joint name="base_stand_joint2" type="fixed">
+    <joint name="base_stand_joint2" type="fixed">
         <origin xyz="0 -0.2 ${stand_length/2+0.08}" rpy="0 0 ${M_PI/2}" />        
         <parent link="base_link"/>
         <child link="stand2" />
@@ -94,30 +78,30 @@
         <material>Gazebo/Gray</material>
     </gazebo>
 
-    <arm_base prefix="right" parent="stand2" xyz="0 0 0" rpy="${M_PI/2} 0 0"/-->
+    <arm_base prefix="right" parent="stand2" xyz="0 0 0" rpy="${M_PI/2} 0 0"/>
     <!-- leftCamera -->
-    <!--joint name="left_camera_joint" type="fixed">
+    <joint name="left_camera_joint" type="fixed">
         <origin xyz="${camera_offset_x} ${camera_offset_y} ${camera_offset_z}" rpy="${M_PI/2} 0 0" />
         <parent link="left_link6"/>
         <child link="left_camera_link"/>
     </joint>
 
-    <xacro:usb_camera prefix="left_camera"/-->
+    <xacro:usb_camera prefix="left_camera"/>
 
     <!-- rightCamera -->
-    <!--joint name="right_camera_joint" type="fixed">
+    <joint name="right_camera_joint" type="fixed">
         <origin xyz="${camera_offset_x} ${camera_offset_y} ${camera_offset_z}" rpy="${M_PI/2} 0 0" />
         <parent link="right_link6"/>
         <child link="right_camera_link"/>
     </joint>
 
-    <xacro:usb_camera prefix="right_camera"/-->
+    <xacro:usb_camera prefix="right_camera"/>
     <!-- Kinect -->
   <!--  <joint name="kinect_frame_joint" type="fixed">
         <origin xyz="0 0 ${kinect_offset_z}" rpy="0 ${kinect_offset_p} 0" />
         <parent link="stand1"/>
         <child link="camera_link"/>
     </joint>
-    <xacro:kinect_camera prefix="camera"/> -->```
+    <xacro:kinect_camera prefix="camera"/> -->
 
 </robot>

@@ -1,6 +1,6 @@
 marm:
   left_tool_controller:
-    type: "position_controllers/JointTrajectoryController"
+    type: "effort_controllers/JointTrajectoryController"
     joints:
       - left_finger_joint1 
     gains:
@@ -14,7 +14,7 @@ marm:
     action_monitor_rate: 10
 
   right_tool_controller:
-    type: "position_controllers/JointTrajectoryController"
+    type: "effort_controllers/JointTrajectoryController"
     joints:
       - right_finger_joint1
     gains:
@@ -28,7 +28,7 @@ marm:
     action_monitor_rate: 10
 
   arm_controller:
-    type: "position_controllers/JointTrajectoryController"
+    type: "effort_controllers/JointTrajectoryController"
     joints:
       - left_joint1
       - left_joint2
