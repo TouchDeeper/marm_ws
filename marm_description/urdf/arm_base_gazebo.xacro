@@ -279,12 +279,13 @@
             <cylinder_inertial_matrix m="${link6_mass}" r="${link6_radius}" h="${link6_length}"/>
         </link>
 
-        <joint name="${prefix}_finger_joint1" type="prismatic">
+        <!--joint name="${prefix}_finger_joint1" type="prismatic"-->
+        <joint name="${prefix}_finger_joint1" type="fixed">
             <parent link="${prefix}_link6"/>
             <child link="${prefix}_gripper_finger_link1"/>
             <origin xyz="${link6_length} -0.03 0" rpy="0 0 0" />
-            <axis xyz="0 1 0" />
-            <limit effort="100" lower="0" upper="0.06" velocity="0.02"/>
+            <!--axis xyz="0 1 0" />
+            <limit effort="100" lower="0" upper="0.06" velocity="0.02"/-->
         </joint>
 
         <!-- //////////////////////////////////////   gripper   ////////////////////////////////////////////// -->
@@ -364,22 +365,22 @@
         <gazebo reference="${prefix}_link6">
             <material>Gazebo/Blue</material>
         </gazebo>
-        <gazebo reference="${prefix}_gripper_finger_link1">
+        <!--gazebo reference="${prefix}_gripper_finger_link1">
             <material>Gazebo/White</material>
         </gazebo>
         <gazebo reference="${prefix}_gripper_finger_link2">
             <material>Gazebo/Black</material>
-        </gazebo>
+        </gazebo-->
         
         <!-- Transmissions for ROS Control -->
         <xacro:macro name="transmission_block" params="joint_name">
             <transmission name="${joint_name}_trans">
                 <type>transmission_interface/SimpleTransmission</type>
                 <joint name="${joint_name}">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                 </joint>
                 <actuator name="${joint_name}_motor">
-                    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+                    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
                     <mechanicalReduction>1</mechanicalReduction>
                 </actuator>
             </transmission>
@@ -391,7 +392,7 @@
         <xacro:transmission_block joint_name="${prefix}_joint4"/>
         <xacro:transmission_block joint_name="${prefix}_joint5"/>
         <xacro:transmission_block joint_name="${prefix}_joint6"/>
-        <xacro:transmission_block joint_name="${prefix}_finger_joint1"/>
+        <!--xacro:transmission_block joint_name="${prefix}_finger_joint1"/-->
 
 
     </xacro:macro>

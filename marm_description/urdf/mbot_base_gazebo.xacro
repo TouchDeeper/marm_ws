@@ -69,6 +69,14 @@
                 <geometry>
                     <cylinder radius="${wheel_radius}" length = "${wheel_length}"/>
                 </geometry>
+                <!--surface>
+                  <friction>
+                     <ode>
+                        <mu>100</mu>
+                        <mu2>100</mu2>
+                     </ode>
+                  </friction>
+                </surface-->
             </collision>
             <cylinder_inertial_matrix  m="${wheel_mass}" r="${wheel_radius}" h="${wheel_length}" />
         </link>
@@ -112,14 +120,6 @@
                 <geometry>
                     <sphere radius="${caster_radius}" />
                 </geometry>
-                <surface>
-                    <friction>
-                      <ode>
-                        <mu>0.0</mu>
-                        <mu2>0.0</mu2>
-                      </ode>
-                    </friction>
-                </surface>
             </collision>      
             <sphere_inertial_matrix  m="${caster_mass}" r="${caster_radius}" />
         </link>
@@ -154,8 +154,8 @@
         <gazebo reference="base_footprint">
             <turnGravityOff>false</turnGravityOff>
         </gazebo>-->
-        <!--link name="base_footprint"></link-->
-        <link name="base_footprint">
+        <link name="base_footprint"></link>
+        <!--link name="base_footprint">
            <inertial>
                 <mass value="0.0001" />
                 <origin xyz="0 0 0" />
@@ -172,7 +172,7 @@
         </link>
         <gazebo reference="base_footprint">
             <turnGravityOff>false</turnGravityOff>
-        </gazebo>
+        </gazebo-->
 
         <joint name="base_footprint_joint" type="fixed">
             <origin xyz="0 0 ${base_length/2 + caster_radius*2}" rpy="0 0 0" />        
