@@ -1,5 +1,7 @@
 <launch>
-
+    <arg name="init_pos_x" default="0.0"/>
+    <arg name="init_pos_y" default="0.0"/>
+    <arg name="init_pos_z" default="0.1"/>
     <!-- 设置launch文件的参数 -->
     <arg name="world_name" value="$(find mbot_gazebo)/worlds/playground.world"/>
     <arg name="paused" default="false"/>
@@ -23,6 +25,11 @@
 
     <!-- 在gazebo中加载机器人模型-->
     <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-          args="-urdf -model marm -param robot_description"/> 
+          args="-urdf
+                -model marm 
+                -param robot_description
+                -x $(arg init_pos_x)
+                -y $(arg init_pos_y)
+                -z $(arg init_pos_z)"/> 
 
 </launch>

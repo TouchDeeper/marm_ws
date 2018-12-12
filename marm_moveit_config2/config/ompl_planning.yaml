@@ -146,8 +146,6 @@ left_arm:
     - LazyPRMstar
     - SPARS
     - SPARStwo
-  projection_evaluator: joints(left_joint1,left_joint2)
-  longest_valid_segment_fraction: 0.005
 right_arm:
   default_planner_config: None
   planner_configs:
@@ -174,64 +172,8 @@ right_arm:
     - LazyPRMstar
     - SPARS
     - SPARStwo
-  projection_evaluator: joints(right_joint1,right_joint2)
-  longest_valid_segment_fraction: 0.005
 dual_arm:
-  default_planner_config: None
-  planner_configs:
-    - SBL
-    - EST
-    - LBKPIECE
-    - BKPIECE
-    - KPIECE
-    - RRT
-    - RRTConnect
-    - RRTstar
-    - TRRT
-    - PRM
-    - PRMstar
-    - FMT
-    - BFMT
-    - PDST
-    - STRIDE
-    - BiTRRT
-    - LBTRRT
-    - BiEST
-    - ProjEST
-    - LazyPRM
-    - LazyPRMstar
-    - SPARS
-    - SPARStwo
-  projection_evaluator: joints(left_joint1,left_joint2)
-  longest_valid_segment_fraction: 0.005
-left_tool:
-  default_planner_config: None
-  planner_configs:
-    - SBL
-    - EST
-    - LBKPIECE
-    - BKPIECE
-    - KPIECE
-    - RRT
-    - RRTConnect
-    - RRTstar
-    - TRRT
-    - PRM
-    - PRMstar
-    - FMT
-    - BFMT
-    - PDST
-    - STRIDE
-    - BiTRRT
-    - LBTRRT
-    - BiEST
-    - ProjEST
-    - LazyPRM
-    - LazyPRMstar
-    - SPARS
-    - SPARStwo
-right_tool:
-  default_planner_config: None
+  default_planner_config: ""
   planner_configs:
     - SBL
     - EST

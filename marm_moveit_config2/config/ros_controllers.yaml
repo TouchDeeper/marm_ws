@@ -16,14 +16,12 @@ arm2:
       - left_joint4
       - left_joint5
       - left_joint6
-      - left_finger_joint1
       - right_joint1
       - right_joint2
       - right_joint3
       - right_joint4
       - right_joint5
       - right_joint6
-      - right_finger_joint1
     sim_control_mode: 1  # 0: position, 1: velocity
 # Publish all joint states
 # Creates the /joint_states topic necessary in ROS
@@ -70,15 +68,3 @@ arm2:
         - right_joint4
         - right_joint5
         - right_joint6
-    - name: left_tool_controller
-      action_ns: follow_joint_trajectory
-      default: True
-      type: FollowJointTrajectory
-      joints:
-        []
-    - name: right_tool_controller
-      action_ns: follow_joint_trajectory
-      default: True
-      type: FollowJointTrajectory
-      joints:
-        []

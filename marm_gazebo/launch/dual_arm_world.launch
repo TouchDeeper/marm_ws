@@ -1,5 +1,7 @@
 <launch>
-
+  <arg name="init_pos_x" default="0.0"/>
+  <arg name="init_pos_y" default="0.0"/>
+  <arg name="init_pos_z" default="0.1"/>
   <!-- these are the arguments you can pass this launch file, for example paused:=true -->
   <arg name="paused" default="false"/>
   <arg name="use_sim_time" default="true"/>
@@ -22,7 +24,12 @@
   
   <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-	args="-urdf -model arm2 -param robot_description"/> 
+	args="-urdf 
+        -model arm2 
+        -param robot_description
+        -x $(arg init_pos_x)
+        -y $(arg init_pos_y)
+        -z $(arg init_pos_z)"/> 
 
 
 </launch>
