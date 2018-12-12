@@ -8,8 +8,8 @@
 <!-- # The visualization component of MoveIt!-->
   <include file="$(find marm_moveit__config3)/launch/moveit_rviz.launch" />
   <!-- We do not have a robot connected, so publish fake joint states -->
-   <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+   <!--node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
       <param name="/use_gui" value="false"/> 
       <rosparam param="/source_list">[/marm/joint_states]</rosparam>
-   </node>
+   </node-->
 </launch>

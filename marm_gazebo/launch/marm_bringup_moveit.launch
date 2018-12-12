@@ -2,7 +2,7 @@
   
     <!-- Launch Gazebo  -->
     <include file="$(find marm_gazebo)/launch/marm_world.launch" />
-
+    <!--include file="$(find marm_gazebo)/launch/dual_arm_world.launch" /-->
     <!-- ros_control arm launch file -->
     <include file="$(find marm_gazebo)/launch/marm_gazebo_states.launch" />   
 
@@ -10,6 +10,6 @@
     <include file="$(find marm_gazebo)/launch/marm_trajectory_controller.launch" />
 
     <!-- moveit launch file -->
-    <!--include file="$(find marm_moveit__config3)/launch/moveit_planning_execution.launch" /-->
+    <include file="$(find marm_moveit__config3)/launch/moveit_planning_execution.launch" />
 
 </launch>

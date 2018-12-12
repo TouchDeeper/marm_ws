@@ -1,22 +1,47 @@
 <?xml version="1.0"?>
 <robot name="marm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+    <xacro:property name="stand_mass"   value="2" /> 
+    <xacro:property name="stand_radius" value="0.03"/>
+    <xacro:property name="stand_length" value="0.4"/>
     <xacro:include filename="$(find marm_description)/urdf/mbot_base_gazebo.xacro" />
     <xacro:include filename="$(find marm_description)/urdf/arm_base_gazebo.xacro" />
     <xacro:include filename="$(find marm_description)/urdf/marm.gazebo.urdf.xacro" />
     <xacro:include filename="$(find marm_description)/urdf/sensors/camera_gazebo.xacro" />
     <!--xacro:include filename="$(find marm_description)/urdf/kinect_gazebo.xacro" /-->
 
-    <xacro:property name="stand_mass"   value="2" /> 
-    <xacro:property name="stand_radius" value="0.03"/>
-    <xacro:property name="stand_length" value="0.4"/>
 
-    <xacro:property name="kinect_offset_z" value="0.24" />
-    <xacro:property name="kinect_offset_p" value="0.4" />
+
+    <!--xacro:property name="kinect_offset_z" value="0.24" />
+    <xacro:property name="kinect_offset_p" value="0.4" /-->
 
     <xacro:property name="camera_offset_x" value="0" />
     <xacro:property name="camera_offset_y" value="${link6_radius+length_y/2}" />
     <xacro:property name="camera_offset_z" value="0" />
-
+    <!--link name="virtuallink" />
+    <gazebo reference="virtuallink">
+        <material>Gazebo/Gray</material>
+    </gazebo>
+    <joint name="virtualjoint" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="virtuallink" />
+        <child link="base_link" />
+    </joint>
+    <link name="base_link">
+        <visual>
+			    <origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
+			    <geometry>
+				      <box size="1 1 0.02" />
+			    </geometry>
+			    <material name="Black" />
+        </visual>
+        <collision>
+            <origin xyz=" 0 0 0.02"  rpy="0 0 0"/>
+            <geometry>
+                <box size="1 1 0.02" />
+            </geometry>
+        </collision>
+        <box_inertial_matrix m="1000" w="1" h="0.02" d="1"/>
+    </link-->
 
 
     <mbot_base_gazebo/>
@@ -103,5 +128,4 @@
         <child link="camera_link"/>
     </joint>
     <xacro:kinect_camera prefix="camera"/> -->
-
 </robot>

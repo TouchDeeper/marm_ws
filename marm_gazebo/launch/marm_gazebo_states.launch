@@ -3,12 +3,12 @@
     <rosparam file="$(find marm_gazebo)/config/marm_gazebo_joint_states.yaml" command="load"/>
 
     <node name="joint_controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-          output="screen" ns="/marm" args="joint_state_controller" />
+          output="screen" args="joint_state_controller" />
 
     <!-- 运行robot_state_publisher节点，发布tf  -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
         respawn="false" output="screen">
-        <remap from="/joint_states" to="/marm/joint_states" />
+        <!--remap from="/joint_states" to="/marm/joint_states" /-->
     </node>
 
 </launch>

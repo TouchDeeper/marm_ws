@@ -154,8 +154,8 @@
         <gazebo reference="base_footprint">
             <turnGravityOff>false</turnGravityOff>
         </gazebo>-->
-        <link name="base_footprint"></link>
-        <!--link name="base_footprint">
+        <!--link name="base_footprint"></link-->
+        <link name="base_footprint">
            <inertial>
                 <mass value="0.0001" />
                 <origin xyz="0 0 0" />
@@ -172,7 +172,7 @@
         </link>
         <gazebo reference="base_footprint">
             <turnGravityOff>false</turnGravityOff>
-        </gazebo-->
+        </gazebo>
 
         <joint name="base_footprint_joint" type="fixed">
             <origin xyz="0 0 ${base_length/2 + caster_radius*2}" rpy="0 0 0" />        

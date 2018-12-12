@@ -1,5 +1,4 @@
 marm:
-
   arm_controller:
     type: "effort_controllers/JointTrajectoryController"
     joints:
